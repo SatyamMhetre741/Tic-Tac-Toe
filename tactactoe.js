@@ -15,7 +15,7 @@ buttons.forEach((button) => {
 function checkWinner(){
     const winningcorrd = [
         [0, 1, 2], [3, 4, 5], [6, 7, 8], 
-        [0, 3, 6], [1, 3, 7], [2, 4, 8],
+        [0, 3, 6], [1, 4, 7], [2, 5, 8],
         [0, 4, 8], [2, 4, 6]
     ];
 
@@ -26,14 +26,18 @@ function checkWinner(){
             buttons[a].innerHTML === buttons[b].innerHTML &&
             buttons[a].innerHTML === buttons[c].innerHTML
         ){
-            alert(`${buttons[a].innerHTML} won the game`);
-            clearboard();
+            setTimeout(()=>{
+                alert(`${buttons[a].innerHTML} won the game!`);
+                clearboard();
+            }, 200);
         }
     });
 
     if(buttons.every((button) => button.innerHTML !== "")){
-        alert("it's a draw");
-        clearboard();
+        setTimeout(()=>{
+            alert("It's a draw");
+            clearboard();
+        }, 200);
     }
 }
 
@@ -41,4 +45,5 @@ function clearboard(){
     buttons.forEach((button) => {
         button.innerHTML=  "";
     }); 
+    isXTurn =  true;
 }
